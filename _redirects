@@ -1,0 +1,12 @@
+# Redirecciones de la web antigua (WordPress) a la nueva. Formato de Netlify.
+/nosotros        /#sobre-mi    301
+/contacto        /#contacto    301
+/servicios       /#servicios   301
+/servicios/*     /#servicios   301
+/blog            /             301
+/blog/*          /             301
+/categoria/*     /             301
+
+# Archivos del repositorio que no son parte de la web
+/README.md       /404.html     404!
+/netlify.toml    /404.html     404!

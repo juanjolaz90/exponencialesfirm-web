@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formación en Claude Code 1:1 | Exponenciales Firm</title>
+<meta name="description" content="Aprende Claude Code desde cero con sesiones 1:1 o en grupos reducidos. Sin cursos grabados: tu caso real y tu primer proyecto funcionando. Reserva tu sesión.">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0A10">
+<link rel="canonical" href="https://exponencialesfirm.es/formacion">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Exponenciales Firm">
+<meta property="og:url" content="https://exponencialesfirm.es/formacion">
+<meta property="og:title" content="Aprende Claude Code con alguien al lado">
+<meta property="og:description" content="Sesiones 1:1 y grupos reducidos para aprender Claude Code desde cero, con tu caso real. Sin cursos grabados.">
+<meta property="og:image" content="https://exponencialesfirm.es/compartir.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0A10; --bg-2:#121019; --line:#24212D; --text:#F2F0EB; --text-2:#A9A5B3; --text-3:#77737F;
+    --coral:#F43A59;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{font-family:"Geist",system-ui,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.5}
+  a{color:inherit;text-decoration:none}
+  :focus-visible{outline:2px solid var(--text);outline-offset:3px;border-radius:4px}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 48px}
+  .mono{font-family:"Geist Mono",ui-monospace,monospace;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:var(--text-3)}
+  .kicker{margin-bottom:24px}
+
+  nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0;border-bottom:1px solid var(--line)}
+  nav img{height:72px;margin:-14px 0 -14px -14px;filter:brightness(0) invert(1)}
+  nav ul{display:flex;gap:32px;list-style:none;font-size:15px;color:var(--text-2)}
+  nav ul a[aria-current]{color:var(--text)}
+  .btn{display:inline-flex;align-items:center;gap:8px;font:600 15px/1 "Geist",sans-serif;padding:14px 20px;border-radius:8px;transition:transform .15s}
+  .btn:hover{transform:translateY(-1px)}
+  @media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover{transform:none}}
+  .btn--coral{background:var(--coral);color:#0B0A10}
+  .btn--ghost{border:1px solid var(--line);color:var(--text)}
+
+  section{padding:96px 0}
+  .alt{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  h2{font-weight:700;font-size:56px;line-height:1;letter-spacing:-2.5px;max-width:820px}
+  h2 span{color:var(--coral)}
+  .intro{font-size:19px;color:var(--text-2);max-width:620px;margin-top:20px}
+
+  /* Hero */
+  .hero{padding:96px 0 72px}
+  .hero .mono{color:var(--coral);margin-bottom:28px}
+  h1{font-weight:700;font-size:92px;line-height:.95;letter-spacing:-4.5px;max-width:960px}
+  h1 span{color:var(--text-3)}
+  .lede{font-size:20px;line-height:1.55;color:var(--text-2);max-width:600px;margin:32px 0 40px}
+  .ctas{display:flex;gap:12px;flex-wrap:wrap}
+  .micro{margin-top:18px;font-size:14px;color:var(--text-3)}
+
+  /* Listas numeradas en filas */
+  .rows{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 48px;margin-top:48px}
+  .rows li{padding:22px 0;border-top:1px solid var(--line);display:flex;gap:18px;font-size:18px;color:var(--text-2)}
+  .rows li .mono{padding-top:5px;flex:none}
+  .rows li b{color:var(--text);font-weight:600}
+  .note{margin-top:32px;font-size:17px;color:var(--text)}
+
+  /* Formatos */
+  .formats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
+  .card{border:1px solid var(--line);border-radius:14px;padding:32px;display:flex;flex-direction:column;background:var(--bg)}
+  .card--featured{border-color:var(--coral)}
+  .card h3{font-weight:700;font-size:26px;letter-spacing:-.8px;margin:14px 0 8px}
+  .card > p{color:var(--text-2);font-size:15px}
+  .facts{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:10px;margin:24px 0}
+  .facts div{padding:14px 16px}
+  .facts div + div{border-left:1px solid var(--line)}
+  .facts .mono{font-size:11px}
+  .facts p{font-size:15px;margin-top:6px;color:var(--text)}
+  .facts .price{font-weight:700;font-size:26px;letter-spacing:-.8px;line-height:1.1}
+  .facts s{color:var(--text-3);font-size:14px;font-weight:400;margin-left:6px;letter-spacing:0}
+  .card ul{list-style:none;margin-bottom:28px;flex:1}
+  .card li{padding:10px 0;border-top:1px solid var(--line);font-size:15px;color:var(--text-2);display:flex;gap:10px}
+  .card li::before{content:"✓";color:var(--coral);font-weight:600}
+  .card .btn{justify-content:center}
+  .card .micro{margin-top:12px;font-size:13px;text-align:center}
+  .tag{display:inline-block;align-self:flex-start;background:var(--coral);color:#0B0A10;font:600 11px/1 "Geist Mono",monospace;letter-spacing:1px;text-transform:uppercase;padding:6px 8px;border-radius:4px}
+  .launch{margin-top:20px;font-size:14px;color:var(--text-3)}
+  .guarantee{display:flex;gap:24px;align-items:baseline;margin-top:16px;padding:22px 28px;border:1px solid var(--line);border-radius:14px}
+  .guarantee .mono{color:var(--coral);flex:none}
+  .guarantee p:last-child{color:var(--text-2);font-size:16px}
+  .guarantee b{color:var(--text);font-weight:600}
+  @media (max-width:860px){.guarantee{flex-direction:column;gap:8px;padding:20px}}
+
+  /* Pasos */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);margin-top:48px}
+  .steps > div{padding:28px 32px 0 0}
+  .steps > div + div{padding-left:32px;border-left:1px solid var(--line)}
+  .steps h3{font-weight:600;font-size:20px;margin:12px 0 8px}
+  .steps p{color:var(--text-2);font-size:16px}
+
+  /* Es para ti */
+  .fit{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px}
+  .fit h3{font-weight:600;font-size:15px;margin-bottom:8px}
+  .fit ul{list-style:none}
+  .fit li{padding:16px 0;border-top:1px solid var(--line);font-size:17px;color:var(--text-2);display:flex;gap:14px}
+  .fit li b{font-weight:600;width:16px;flex:none}
+  .yes b{color:var(--coral)} .no b{color:var(--text-3)}
+
+  /* Quién enseña */
+  .about{display:grid;grid-template-columns:.7fr 1.3fr;gap:64px;align-items:center}
+  .photo{aspect-ratio:4/5;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#fff}
+  .photo img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block}
+  .about p{font-size:19px;color:var(--text-2);margin-top:20px;max-width:620px}
+  .about p.strong{color:var(--text);font-weight:600}
+
+  /* FAQ */
+  .faq{margin-top:48px;max-width:860px}
+  .faq details{border-top:1px solid var(--line)}
+  .faq details:last-child{border-bottom:1px solid var(--line)}
+  .faq summary{list-style:none;cursor:pointer;padding:22px 40px 22px 0;font-size:19px;font-weight:600;position:relative}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";position:absolute;right:4px;top:18px;font-size:24px;font-weight:400;color:var(--coral)}
+  .faq details[open] summary::after{content:"−"}
+  .faq details p{padding:0 40px 24px 0;color:var(--text-2);font-size:17px}
+
+  /* CTA final */
+  .final{text-align:left;padding:120px 0}
+  .final h2{font-size:72px;letter-spacing:-3.5px;max-width:900px}
+  .final .ctas{margin-top:40px}
+
+  footer{border-top:1px solid var(--line);padding:32px 0;font-size:14px;color:var(--text-3)}
+  footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  footer .legal{display:flex;gap:8px 20px;flex-wrap:wrap}
+  footer a:hover{color:var(--text)}
+
+  @media (max-width:960px){
+    .formats{grid-template-columns:1fr}
+  }
+  @media (max-width:860px){
+    .wrap{padding:0 20px}
+    nav ul{display:none}
+    nav .btn{padding:12px 14px;font-size:14px}
+    section{padding:64px 0}
+    .hero{padding:56px 0 48px}
+    h1{font-size:50px;letter-spacing:-2px}
+    h2{font-size:36px;letter-spacing:-1.2px}
+    .final h2{font-size:44px;letter-spacing:-1.8px}
+    .rows,.fit,.about{grid-template-columns:1fr}
+    .about{gap:32px}
+    .photo{max-width:320px}
+    .steps{grid-template-columns:1fr}
+    .steps > div,.steps > div + div{padding:24px 0;border-left:0;border-bottom:1px solid var(--line)}
+    .card{padding:24px}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav aria-label="Principal">
+    <a href="/"><img src="Logo Exponenciales.png" alt="Exponenciales Firm, inicio"></a>
+    <ul>
+      <li><a href="/#servicios">Servicios</a></li>
+      <li><a href="/formacion" aria-current="page">Formación</a></li>
+      <li><a href="/#proyectos">Proyectos</a></li>
+      <li><a href="/#sobre-mi">Sobre mí</a></li>
+    </ul>
+    <a class="btn btn--coral" href="/#contacto">Agendar llamada</a>
+  </nav>
+
+  <header class="hero">
+    <p class="mono">Para emprendedores que quieren aprender Claude Code desde cero</p>
+    <h1>Aprende Claude Code <span>con alguien al lado.</span></h1>
+    <p class="lede">Sin cursos grabados ni comunidades de miles de personas. Una sesión contigo, en tu pantalla y con tu caso real. Sales con tu primer proyecto funcionando.</p>
+    <div class="ctas">
+      <a class="btn btn--coral" href="#formatos">Reservar sesión 1:1 →</a>
+      <a class="btn btn--ghost" href="#formatos">Ver formatos</a>
+    </div>
+    <p class="micro">Online · Pago seguro con tarjeta · No necesitas saber programar</p>
+  </header>
+</div>
+
+<section class="alt" aria-labelledby="t-suena">
+  <div class="wrap">
+    <p class="mono kicker">01 / ¿Te suena?</p>
+    <h2 id="t-suena">No es que no seas capaz. <span>Es que nadie te lo explicó con tu caso delante.</span></h2>
+    <ul class="rows">
+      <li><span class="mono">01</span>Viste tres tutoriales y sigues sin saber por dónde empezar.</li>
+      <li><span class="mono">02</span>Todos hablan de agentes y tú no te atreves a preguntar lo básico.</li>
+      <li><span class="mono">03</span>Te compraste un curso y lo dejaste en la lección 4.</li>
+      <li><span class="mono">04</span>Haces a mano cosas que una máquina ya podría hacer sola.</li>
+    </ul>
+    <p class="note">Aquí no hay preguntas tontas, ni público, ni nadie que vaya más rápido que tú.</p>
+  </div>
+</section>
+
+<section aria-labelledby="t-construir">
+  <div class="wrap">
+    <p class="mono kicker">02 / Lo que vas a poder construir</p>
+    <h2 id="t-construir">Esto no es teoría. <span>Es lo que vas a saber hacer.</span></h2>
+    <p class="intro">Ejemplos reales de lo que se hace con Claude Code sin ser programador.</p>
+    <ul class="rows">
+      <li><span class="mono">01</span><div><b>Páginas web en horas, no en semanas.</b> Una landing completa, lista para publicar.</div></li>
+      <li><span class="mono">02</span><div><b>Agentes que enriquecen datos.</b> Le das una lista de empresas y te devuelve sector, tamaño, web y contacto.</div></li>
+      <li><span class="mono">03</span><div><b>Investigadores automáticos.</b> Analizan a tu competencia o un mercado y te entregan un informe.</div></li>
+      <li><span class="mono">04</span><div><b>Agentes que clasifican información.</b> Ordenan leads, correos o tickets por tipo, urgencia o interés.</div></li>
+      <li><span class="mono">05</span><div><b>Informes que se arman solos.</b> De tus hojas de cálculo a un resumen semanal, sin copiar y pegar.</div></li>
+      <li><span class="mono">06</span><div><b>Datos sacados de documentos.</b> Facturas, contratos o PDF convertidos en una tabla ordenada.</div></li>
+    </ul>
+    <p class="note">En la sesión elegimos el que más te sirve y lo construimos juntos.</p>
+  </div>
+</section>
+
+<section class="alt" id="formatos" aria-labelledby="t-formatos">
+  <div class="wrap">
+    <p class="mono kicker">03 / Formatos</p>
+    <h2 id="t-formatos">Elige cómo quieres aprender.</h2>
+    <p class="launch">Precios de lanzamiento. Suben cuando se cumplan los primeros cupos.</p>
+
+    <div class="formats">
+      <article class="card">
+        <p class="mono">01</p>
+        <h3>Sesión 1:1</h3>
+        <p>Para empezar desde cero o para destrabar algo concreto. A tu ritmo, sobre tu proyecto.</p>
+        <div class="facts">
+          <div><p class="mono">Duración</p><p>2 horas</p></div>
+          <div><p class="mono">Inversión</p><p class="price">190 €<s>260 €</s></p></div>
+        </div>
+        <ul>
+          <li>Checklist previo para llegar con todo instalado</li>
+          <li>Videollamada compartiendo pantalla</li>
+          <li>Grabación y resumen de próximos pasos</li>
+          <li>7 días de dudas por correo</li>
+        </ul>
+        <a class="btn btn--ghost" href="mailto:info@exponencialesfirm.com?subject=Quiero%20reservar%20una%20sesi%C3%B3n%201%3A1">Reservar sesión 1:1</a>
+        <p class="micro">Eliges día y hora en mi calendario</p>
+      </article>
+
+      <article class="card card--featured">
+        <span class="tag">Más completo</span>
+        <h3>Pack 1:1 · 3 sesiones</h3>
+        <p>Para avanzar de verdad. Cada sesión parte donde quedó la anterior, con alguien que ya conoce tu caso.</p>
+        <div class="facts">
+          <div><p class="mono">Duración</p><p>3 × 2 h, en 2 a 4 semanas</p></div>
+          <div><p class="mono">Inversión</p><p class="price">490 €<s>690 €</s></p></div>
+        </div>
+        <ul>
+          <li>Todo lo de la sesión 1:1, tres veces</li>
+          <li>Plan de avance hecho para ti</li>
+          <li>Dudas por correo durante todo el pack</li>
+          <li>Avanzas a tu ritmo</li>
+        </ul>
+        <a class="btn btn--coral" href="mailto:info@exponencialesfirm.com?subject=Quiero%20reservar%20el%20pack%201%3A1">Reservar pack</a>
+        <p class="micro">Eliges día y hora de cada sesión</p>
+      </article>
+
+      <article class="card">
+        <p class="mono">03</p>
+        <h3>Grupo reducido</h3>
+        <p>Tres sesiones con gente en tu misma situación. De la instalación a tu primer sistema.</p>
+        <div class="facts">
+          <div><p class="mono">Duración</p><p>3 × 2 h, en 2 semanas</p></div>
+          <div><p class="mono">Inversión</p><p class="price">350 €<s>480 €</s></p></div>
+        </div>
+        <ul>
+          <li>Sesión 1: instalación y tu primer proyecto</li>
+          <li>Sesión 2: conectar tus herramientas (correo, hojas de cálculo, CRM)</li>
+          <li>Sesión 3: tu propio agente o automatización</li>
+          <li>De 4 a 6 personas por grupo</li>
+        </ul>
+        <a class="btn btn--ghost" href="mailto:info@exponencialesfirm.com?subject=Lista%20de%20espera%20del%20grupo">Únete a la lista de espera</a>
+        <p class="micro">Apuntarse es gratis · Te aviso antes de abrir · Mantienes el precio de lanzamiento</p>
+      </article>
+    </div>
+
+    <div class="guarantee">
+      <p class="mono">Garantía</p>
+      <p><b>Si en la primera media hora sientes que no es para ti, cortamos y te devuelvo el dinero.</b> Sin preguntas. Vale para la primera sesión de cualquier formato.</p>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="t-porque">
+  <div class="wrap">
+    <p class="mono kicker">04 / Por qué no otro curso</p>
+    <h2 id="t-porque">Un curso te explica. <span>Aquí lo haces.</span></h2>
+    <div class="steps">
+      <div><p class="mono">01</p><h3>Tu caso, no un ejemplo genérico</h3><p>Trabajamos sobre algo que necesitas de verdad.</p></div>
+      <div><p class="mono">02</p><h3>En tu pantalla, desde el minuto uno</h3><p>Instalamos y configuramos juntos. Nada de "en mi máquina funciona".</p></div>
+      <div><p class="mono">03</p><h3>Te llevas algo funcionando</h3><p>Terminas la sesión con un proyecto real andando.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" aria-labelledby="t-como">
+  <div class="wrap">
+    <p class="mono kicker">05 / Cómo funciona</p>
+    <h2 id="t-como">Tres pasos. Sin sorpresas.</h2>
+    <div class="steps">
+      <div><p class="mono">01 · Antes</p><h3>Reservas y llegas preparado</h3><p>Pagas con tarjeta y te llega un checklist corto y 3 preguntas: qué haces, qué quieres automatizar y qué sabes hoy (vale "nada").</p></div>
+      <div><p class="mono">02 · Durante</p><h3>Lo hacemos juntos</h3><p>Compartes pantalla. Tú escribes, yo te guío.</p></div>
+      <div><p class="mono">03 · Después</p><h3>No te quedas solo</h3><p>Te quedas con la grabación, un resumen con los próximos pasos y 7 días para preguntarme dudas.</p></div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="t-fit">
+  <div class="wrap">
+    <p class="mono kicker">06 / ¿Es para ti?</p>
+    <h2 id="t-fit">Mejor saberlo antes de reservar.</h2>
+    <div class="fit">
+      <div class="yes">
+        <h3>Sí, si…</h3>
+        <ul>
+          <li><b>✓</b>Tienes un negocio o trabajas por tu cuenta y repites tareas a mano.</li>
+          <li><b>✓</b>No sabes programar (no hace falta).</li>
+          <li><b>✓</b>Prefieres que te lo expliquen a ver 20 horas de video.</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h3>No, si…</h3>
+        <ul>
+          <li><b>✗</b>Buscas un curso grabado para ver a tu ritmo: los hay buenos y más baratos.</li>
+          <li><b>✗</b>Quieres que alguien te lo haga todo: para eso está mi consultoría.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" aria-labelledby="t-quien">
+  <div class="wrap about">
+    <figure class="photo"><img src="juanjo-lazcano.jpg" alt="Juanjo Lazcano, formador en Claude Code e IA" width="1024" height="1024" loading="lazy"></figure>
+    <div>
+      <p class="mono kicker">07 / Quién enseña</p>
+      <h2 id="t-quien">Soy Juanjo Lazcano.</h2>
+      <p>Trabajo en CRM, marketing B2B e IA, y uso Claude Code a diario en proyectos reales: webs, agentes que enriquecen y clasifican datos, automatizaciones conectadas al CRM.</p>
+      <p>Antes di clases y coordiné programas en una escuela de negocios. De ahí viene la manía de explicar lo complejo para que se pueda usar el mismo día.</p>
+      <p class="strong">No soy programador de formación. Justamente por eso sé dónde te vas a trabar.</p>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="t-faq">
+  <div class="wrap">
+    <p class="mono kicker">08 / Preguntas frecuentes</p>
+    <h2 id="t-faq">Lo que todos preguntan.</h2>
+    <div class="faq">
+      <details><summary>¿Necesito saber programar?</summary><p>No. Claude Code escribe el código; tú aprendes a pedirle bien las cosas y a revisar lo que hace.</p></details>
+      <details><summary>¿Qué necesito para la sesión?</summary><p>Tu propio Windows o Mac, buena conexión y una cuenta de pago de Claude, que corre por tu cuenta. Te mando el checklist al reservar.</p></details>
+      <details><summary>¿Y si en 2 horas no llego a terminar?</summary><p>La sesión está pensada para que salgas con algo funcionando. Si tu proyecto es más grande, lo dividimos y te dejo claro el siguiente paso.</p></details>
+      <details><summary>¿Cómo elijo el día y la hora?</summary><p>Las sesiones 1:1 y el pack los agendas tú en mi calendario, en el horario que te acomode. El grupo tiene fechas fijas, que se anuncian a la lista de espera antes de abrir.</p></details>
+      <details><summary>¿Puedo cambiar la fecha?</summary><p>En el 1:1 y el pack, sí: gratis si avisas con al menos 24 horas. Si avisas después o no te conectas, la sesión se da por hecha. En el grupo las fechas son fijas; si te pierdes una sesión, te quedas con la grabación.</p></details>
+      <details><summary>¿Y si no me sirve?</summary><p>Si en la primera media hora de tu primera sesión sientes que no es para ti, cortamos ahí y te devuelvo el dinero completo. Sin preguntas.</p></details>
+      <details><summary>¿Queda grabada?</summary><p>Sí, te la quedas tú. Nadie más la ve.</p></details>
+      <details><summary>¿Recibo factura?</summary><p>Sí, te llega automáticamente al pagar.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="alt final" aria-labelledby="t-final">
+  <div class="wrap">
+    <h2 id="t-final">Deja de verlo en videos. <span>Hazlo con alguien al lado.</span></h2>
+    <div class="ctas">
+      <a class="btn btn--coral" href="#formatos">Reservar sesión 1:1 →</a>
+      <a class="btn btn--ghost" href="#formatos">Unirme a la lista del grupo</a>
+    </div>
+    <p class="micro">Online · Pago seguro con tarjeta · Garantía de devolución en la primera media hora</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Exponenciales Firm</span>
+    <span class="legal"><a href="/aviso-legal">Aviso legal</a><a href="/politica-de-privacidad">Privacidad</a><a href="/politica-de-cookies">Cookies</a><a href="mailto:info@exponencialesfirm.com">info@exponencialesfirm.com</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

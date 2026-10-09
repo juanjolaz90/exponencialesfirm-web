@@ -1,0 +1,15 @@
+# Notas de trabajo y estrategia: no forman parte de la web
+CLAUDE.md
+benchmark-webs-consultores-crm.md
+formacion-copy.md
+
+# Bocetos de diseño
+direcciones-visuales.html
+direccion-suizo-oscuro.html
+
+# Herramientas locales y copia generada para subir a mano
+.claude/
+publicar/
+
+# Logo descargado por error (otra empresa)
+logos/regenera.jpg
