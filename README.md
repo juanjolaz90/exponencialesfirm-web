@@ -1,6 +1,6 @@
-# exponencialesfirm.es
+# exponencialesfirm.com
 
-Código de [exponencialesfirm.es](https://exponencialesfirm.es), la web de **Exponenciales Firm**:
+Código de [exponencialesfirm.com](https://exponencialesfirm.com), la web de **Exponenciales Firm**:
 consultoría de CRM, automatización e IA para empresas B2B, y formación 1:1 en Claude Code.
 
 ## Cómo está hecha

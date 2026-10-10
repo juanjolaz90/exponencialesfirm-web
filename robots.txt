@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://exponencialesfirm.es/sitemap.xml
+Sitemap: https://exponencialesfirm.com/sitemap.xml

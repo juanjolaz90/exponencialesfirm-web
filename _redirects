@@ -1,3 +1,10 @@
+# Dominio oficial: exponencialesfirm.com. El .es y las variantes con www llevan a él.
+https://www.exponencialesfirm.com/*   https://exponencialesfirm.com/:splat   301!
+https://exponencialesfirm.es/*        https://exponencialesfirm.com/:splat   301!
+https://www.exponencialesfirm.es/*    https://exponencialesfirm.com/:splat   301!
+http://exponencialesfirm.es/*         https://exponencialesfirm.com/:splat   301!
+http://www.exponencialesfirm.es/*     https://exponencialesfirm.com/:splat   301!
+
 # Redirecciones de la web antigua (WordPress) a la nueva. Formato de Netlify.
 /nosotros        /#sobre-mi    301
 /contacto        /#contacto    301
