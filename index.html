@@ -160,6 +160,12 @@
   .final{padding:120px 0}
   .final h2{font-size:72px;letter-spacing:-3.5px;max-width:900px}
   .final .ctas{margin-top:40px}
+  button.btn{background:transparent;cursor:pointer}
+  .contact-form{margin-top:48px;padding-top:32px;border-top:1px solid var(--line);max-width:760px;scroll-margin-top:24px}
+  .contact-form[hidden]{display:none}
+  .contact-form .hs-form-frame{min-height:120px;margin-top:8px}
+  .final .micro a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}
+  .final .micro a:hover{color:var(--text)}
 
   footer{border-top:1px solid var(--line);padding:32px 0;font-size:14px;color:var(--text-3)}
   footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
@@ -457,9 +463,16 @@
     <h2 id="t-final">Cuéntame qué te quita tiempo. <span>Vemos si tiene arreglo.</span></h2>
     <div class="ctas">
       <a class="btn btn--coral" href="https://meetings-eu1.hubspot.com/exponenciales-firm/juanjo" target="_blank" rel="noopener">Agendar llamada →</a>
-      <a class="btn btn--ghost" href="mailto:info@exponencialesfirm.com">Escribirme un correo</a>
+      <button class="btn btn--ghost" type="button" data-abrir-form aria-controls="formulario-contacto" aria-expanded="false">Escribirme un mensaje</button>
     </div>
     <p class="micro">30 minutos · Gratis · Sin compromiso</p>
+
+    <div class="contact-form" id="formulario-contacto" hidden>
+      <p class="mono">Formulario de contacto</p>
+      <div class="hs-form-frame" data-region="eu1" data-form-id="af25ac9c-0627-41ed-a981-b00012e6c591" data-portal-id="147145193"></div>
+      <p class="micro">Formulario gestionado por HubSpot. Si prefieres, escríbeme a <a href="mailto:info@exponencialesfirm.com">info@exponencialesfirm.com</a>.</p>
+    </div>
+    <noscript><p class="micro">También puedes escribirme a <a href="mailto:info@exponencialesfirm.com">info@exponencialesfirm.com</a>.</p></noscript>
   </div>
 </section>
 
@@ -470,5 +483,26 @@
   </div>
 </footer>
 
+<script>
+  // El formulario de HubSpot solo se carga cuando alguien lo pide con un clic.
+  (function () {
+    var boton = document.querySelector('[data-abrir-form]');
+    var bloque = document.getElementById('formulario-contacto');
+    if (!boton || !bloque) return;
+    var cargado = false;
+    boton.addEventListener('click', function () {
+      bloque.hidden = false;
+      boton.setAttribute('aria-expanded', 'true');
+      if (!cargado) {
+        cargado = true;
+        var s = document.createElement('script');
+        s.src = 'https://js-eu1.hsforms.net/forms/embed/147145193.js';
+        s.defer = true;
+        document.body.appendChild(s);
+      }
+      bloque.scrollIntoView({ block: 'start' });
+    });
+  })();
+</script>
 </body>
 </html>
