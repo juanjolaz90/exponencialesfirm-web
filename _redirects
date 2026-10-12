@@ -13,6 +13,14 @@ http://www.exponencialesfirm.es/*     https://exponencialesfirm.com/:splat   301
 /blog            /             301
 /blog/*          /             301
 /categoria/*     /             301
+/home            /             301
+/feed            /             301
+/feed/*          /             301
+/author/*        /             301
+/tag/*           /             301
+/sitemap_index.xml   /sitemap.xml   301
+/page-sitemap.xml    /sitemap.xml   301
+/post-sitemap.xml    /sitemap.xml   301
 
 # Archivos del repositorio que no son parte de la web
 /README.md       /404.html     404!
