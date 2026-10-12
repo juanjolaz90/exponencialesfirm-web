@@ -166,6 +166,28 @@
   footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   footer .legal{display:flex;gap:8px 20px;flex-wrap:wrap}
   footer a:hover{color:var(--text)}
+  button.btn{cursor:pointer}
+  button.btn--ghost{background:transparent}
+  button.btn--coral{border:0}
+  .contact-form{margin-top:48px;padding-top:32px;border-top:1px solid var(--line);max-width:620px;scroll-margin-top:24px}
+  .contact-form[hidden]{display:none}
+  .hsf{display:grid;grid-template-columns:1fr 1fr;gap:18px 16px;margin-top:20px}
+  .hsf .full{grid-column:1/-1}
+  .hsf label{display:block;font-size:14px;font-weight:500;color:var(--text-2);margin-bottom:8px}
+  .hsf label i{font-style:normal;color:var(--coral)}
+  .hsf input[type=text],.hsf input[type=email],.hsf input[type=tel],.hsf textarea{width:100%;font:400 16px/1.4 "Geist",system-ui,sans-serif;color:var(--text);background:var(--bg-2);border:1px solid var(--line);border-radius:8px;padding:13px 14px}
+  .hsf textarea{min-height:120px;resize:vertical;display:block}
+  .hsf input:focus-visible,.hsf textarea:focus-visible{outline:2px solid var(--coral);outline-offset:1px;border-color:transparent}
+  .hsf ::placeholder{color:var(--text-3)}
+  .hsf .consent{display:flex;gap:10px;align-items:flex-start;font-size:14px;font-weight:400;color:var(--text-2);margin:0}
+  .hsf .consent input{margin-top:3px;accent-color:var(--coral);width:16px;height:16px;flex:none}
+  .hsf .consent a{color:var(--text);text-decoration:underline;text-underline-offset:3px}
+  .hsf .trap{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .hsf-status{font-size:15px;margin-top:12px;color:var(--text-2);min-height:1.4em}
+  .hsf-status[data-tipo="error"]{color:#FF8A9A}
+  .hsf-ok{margin-top:20px;padding:22px 24px;border:1px solid var(--line);border-radius:12px;font-size:17px;color:var(--text);max-width:620px}
+  @media (max-width:560px){.hsf{grid-template-columns:1fr}}
+  .final .micro a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}
 
   @media (max-width:860px){
     .wrap{padding:0 20px}
@@ -588,9 +610,24 @@
     <h2 id="t-final">Tell me what is eating your time. <span>Let's see if it can be fixed.</span></h2>
     <div class="ctas">
       <a class="btn btn--coral" href="https://meetings-eu1.hubspot.com/exponenciales-firm/juanjo" target="_blank" rel="noopener">Book a call →</a>
-      <a class="btn btn--ghost" href="mailto:info@exponencialesfirm.com">Send me an email</a>
+      <button class="btn btn--ghost" type="button" data-abrir-form aria-controls="contact-form" aria-expanded="false">Send me a message</button>
     </div>
     <p class="micro">30 minutes · Free · No commitment</p>
+
+    <div class="contact-form" id="contact-form" hidden>
+      <p class="mono">Contact form</p>
+      <form class="hsf" data-hs-form novalidate data-ok="Thank you. I got your message and will reply by email." data-error="It could not be sent. Email me at info@exponencialesfirm.com." data-falta="Please fill in the fields marked with *." data-correo="Please check the email address." data-acepta="Please accept the privacy policy." data-enviando="Sending…">
+        <div><label for="c-nombre">First name <i>*</i></label><input id="c-nombre" name="firstname" type="text" autocomplete="given-name" required></div>
+        <div><label for="c-apellido">Last name <i>*</i></label><input id="c-apellido" name="lastname" type="text" autocomplete="family-name" required></div>
+        <div><label for="c-correo">Email <i>*</i></label><input id="c-correo" name="email" type="email" autocomplete="email" required></div>
+        <div><label for="c-telefono">Phone</label><input id="c-telefono" name="phone" type="tel" autocomplete="tel"></div>
+        <div class="full"><label for="c-mensaje">How can I help?</label><textarea id="c-mensaje" name="message" placeholder="Tell me what you need…"></textarea></div>
+        <div class="trap" aria-hidden="true"><label>No rellenar <input type="text" name="empresa_web" tabindex="-1" autocomplete="off"></label></div>
+        <label class="consent full"><input type="checkbox" name="acepto" required><span>I have read and accept the <a href="/politica-de-privacidad" target="_blank" rel="noopener">privacy policy</a> (in Spanish).</span></label>
+        <div class="full"><button class="btn btn--coral" type="submit">Send message</button><p class="hsf-status" role="status" aria-live="polite"></p></div>
+      </form>
+    </div>
+    <noscript><p class="micro">You can also email me at <a href="mailto:info@exponencialesfirm.com">info@exponencialesfirm.com</a>.</p></noscript>
   </div>
 </section>
 
@@ -601,5 +638,65 @@
   </div>
 </footer>
 
+<script>
+  // Formularios propios: los datos se envían a HubSpot solo al pulsar el botón de enviar.
+  (function () {
+    var DESTINO = 'https://api-eu1.hsforms.com/submissions/v3/integration/submit/147145193/af25ac9c-0627-41ed-a981-b00012e6c591';
+
+    document.querySelectorAll('[data-abrir-form]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var bloque = document.getElementById(b.getAttribute('aria-controls'));
+        if (!bloque) return;
+        bloque.hidden = false;
+        b.setAttribute('aria-expanded', 'true');
+        bloque.scrollIntoView({ block: 'start' });
+        var primero = bloque.querySelector('input:not([tabindex="-1"])');
+        if (primero) primero.focus({ preventScroll: true });
+      });
+    });
+
+    document.querySelectorAll('form[data-hs-form]').forEach(function (f) {
+      var estado = f.querySelector('.hsf-status');
+      var boton = f.querySelector('button[type=submit]');
+      function avisar(texto, tipo) { estado.textContent = texto; estado.setAttribute('data-tipo', tipo || ''); }
+
+      f.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var d = new FormData(f);
+        if (d.get('empresa_web')) return; // campo trampa: solo lo rellenan los robots
+
+        var vacio = [].some.call(f.querySelectorAll('[required]'), function (c) { return c.type !== 'checkbox' && !c.value.trim(); });
+        if (vacio) { avisar(f.dataset.falta, 'error'); return; }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(d.get('email')).trim())) { avisar(f.dataset.correo, 'error'); return; }
+        if (!f.querySelector('[name=acepto]').checked) { avisar(f.dataset.acepta, 'error'); return; }
+
+        var campos = [];
+        ['firstname', 'lastname', 'email', 'phone', 'message'].forEach(function (n) {
+          var v = String(d.get(n) || '').trim();
+          if (n === 'message' && f.dataset.prefijo) v = f.dataset.prefijo + (v ? ' — ' + v : '');
+          if (v) campos.push({ objectTypeId: '0-1', name: n, value: v });
+        });
+
+        boton.disabled = true;
+        avisar(f.dataset.enviando, '');
+        fetch(DESTINO, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ fields: campos, context: { pageUri: location.href, pageName: document.title } })
+        }).then(function (r) {
+          if (!r.ok) throw new Error(r.status);
+          var ok = document.createElement('p');
+          ok.className = 'hsf-ok';
+          ok.setAttribute('role', 'status');
+          ok.textContent = f.dataset.ok;
+          f.replaceWith(ok);
+        }).catch(function () {
+          boton.disabled = false;
+          avisar(f.dataset.error, 'error');
+        });
+      });
+    });
+  })();
+</script>
 </body>
 </html>
