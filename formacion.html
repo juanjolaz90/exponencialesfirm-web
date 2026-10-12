@@ -608,9 +608,9 @@
 </footer>
 
 <script>
-  // Formularios propios: los datos se envían a HubSpot solo al pulsar el botón de enviar.
+  // Formularios propios: al pulsar enviar, los datos van a un flujo de n8n que crea el contacto en HubSpot.
   (function () {
-    var DESTINO = 'https://api-eu1.hsforms.com/submissions/v3/integration/submit/147145193/af25ac9c-0627-41ed-a981-b00012e6c591';
+    var DESTINO = 'https://exponencialesfirm.app.n8n.cloud/webhook/exponenciales-contacto';
 
     document.querySelectorAll('[data-abrir-form]').forEach(function (b) {
       b.addEventListener('click', function () {
@@ -639,11 +639,10 @@
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(d.get('email')).trim())) { avisar(f.dataset.correo, 'error'); return; }
         if (!f.querySelector('[name=acepto]').checked) { avisar(f.dataset.acepta, 'error'); return; }
 
-        var campos = [];
+        var datos = { tipo: f.dataset.prefijo ? 'lista_espera' : 'contacto', pagina: location.href };
         ['firstname', 'lastname', 'email', 'phone', 'message'].forEach(function (n) {
           var v = String(d.get(n) || '').trim();
-          if (n === 'message' && f.dataset.prefijo) v = f.dataset.prefijo + (v ? ' — ' + v : '');
-          if (v) campos.push({ objectTypeId: '0-1', name: n, value: v });
+          if (v) datos[n] = v;
         });
 
         boton.disabled = true;
@@ -651,7 +650,7 @@
         fetch(DESTINO, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ fields: campos, context: { pageUri: location.href, pageName: document.title } })
+          body: JSON.stringify(datos)
         }).then(function (r) {
           if (!r.ok) throw new Error(r.status);
           var ok = document.createElement('p');
