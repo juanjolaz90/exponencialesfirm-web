@@ -79,9 +79,11 @@
 
   /* Clientes */
   .clients{padding:40px 0;border-top:1px solid var(--line)}
-  .clients ul{list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:28px 48px;margin-top:24px}
-  .clients img{display:block;width:auto;filter:brightness(0) invert(1);opacity:.72}
-  .clients .txt{font-size:20px;font-weight:600;letter-spacing:-.3px;color:var(--text);opacity:.72}
+  .clients ul{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:8px 24px;margin-top:24px}
+  .clients li{display:flex;align-items:center;justify-content:center;height:76px}
+  .clients img{display:block;height:var(--h);width:auto;max-width:100%;object-fit:contain;filter:brightness(0) invert(1);opacity:.72}
+  @media (max-width:860px){.clients ul{grid-template-columns:repeat(3,1fr)}.clients li{height:64px}.clients img{height:calc(var(--h) * .82)}}
+  @media (max-width:520px){.clients ul{grid-template-columns:repeat(2,1fr);gap:4px 16px}}
 
   /* Filas numeradas */
   .rows{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 48px;margin-top:48px}
@@ -377,16 +379,16 @@
   <div class="clients">
     <p class="mono">They have trusted my work</p>
     <ul>
-      <li><img src="/logos/moodys.png" alt="Moody's" style="height:30px"></li>
-      <li><img src="/logos/onedirect.png" alt="Onedirect" style="height:26px"></li>
-      <li><img src="/logos/incept-group.png" alt="Incept Group" style="height:116px;margin:-40px -24px"></li>
-      <li><img src="/logos/icr.png" alt="ICR Chile" style="height:36px;filter:invert(1) grayscale(1) brightness(1.5)"></li>
-      <li><img src="/logos/cp.webp" alt="C&amp;P" style="height:40px"></li>
-      <li><img src="/logos/surglobal-odorox.png" alt="SurGlobal Odorox" style="height:22px;filter:none"></li>
-      <li><img src="/logos/monest-capital.svg" alt="Monest Capital" style="height:34px"></li>
-      <li><img src="/logos/edebe.svg" alt="Edebé" style="height:30px"></li>
-      <li><img src="/logos/regenera.webp" alt="Regenera Health" style="height:34px;filter:none"></li>
-      <li><img src="/logos/wipple.webp" alt="Wipple" style="height:58px;margin:-12px -6px"></li>
+      <li><img src="/logos/moodys.png" alt="Moody's" style="--h:28px"></li>
+      <li><img src="/logos/onedirect.png" alt="Onedirect" style="--h:25px"></li>
+      <li><img src="/logos/incept-group.png" alt="Incept Group" style="--h:38px"></li>
+      <li><img src="/logos/icr.png" alt="ICR Chile" style="--h:40px;filter:invert(1) grayscale(1) brightness(1.5)"></li>
+      <li><img src="/logos/cp.webp" alt="C&amp;P" style="--h:46px"></li>
+      <li><img src="/logos/surglobal-odorox.png" alt="SurGlobal Odorox" style="--h:22px;filter:none"></li>
+      <li><img src="/logos/monest-capital.svg" alt="Monest Capital" style="--h:40px"></li>
+      <li><img src="/logos/edebe.svg" alt="Edebé" style="--h:34px"></li>
+      <li><img src="/logos/regenera.webp" alt="Regenera Health" style="--h:44px;filter:none"></li>
+      <li><img src="/logos/wipple.webp" alt="Wipple" style="--h:62px"></li>
     </ul>
   </div>
 </div>
