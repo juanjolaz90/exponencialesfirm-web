@@ -149,9 +149,9 @@
   .hsf .full{grid-column:1/-1}
   .hsf label{display:block;font-size:14px;font-weight:500;color:var(--text-2);margin-bottom:8px}
   .hsf label i{font-style:normal;color:var(--coral)}
-  .hsf input[type=text],.hsf input[type=email],.hsf input[type=tel],.hsf textarea{width:100%;font:400 16px/1.4 "Geist",system-ui,sans-serif;color:var(--text);background:var(--bg-2);border:1px solid var(--line);border-radius:8px;padding:13px 14px}
+  .hsf input[type=text],.hsf input[type=email],.hsf input[type=tel],.hsf textarea,.hsf select{width:100%;font:400 16px/1.4 "Geist",system-ui,sans-serif;color:var(--text);background:var(--bg-2);border:1px solid var(--line);border-radius:8px;padding:13px 14px}
   .hsf textarea{min-height:120px;resize:vertical;display:block}
-  .hsf input:focus-visible,.hsf textarea:focus-visible{outline:2px solid var(--coral);outline-offset:1px;border-color:transparent}
+  .hsf input:focus-visible,.hsf textarea:focus-visible,.hsf select:focus-visible{outline:2px solid var(--coral);outline-offset:1px;border-color:transparent}
   .hsf ::placeholder{color:var(--text-3)}
   .hsf .consent{display:flex;gap:10px;align-items:flex-start;font-size:14px;font-weight:400;color:var(--text-2);margin:0}
   .hsf .consent input{margin-top:3px;accent-color:var(--coral);width:16px;height:16px;flex:none}
@@ -237,7 +237,7 @@
      "name": "Grupo reducido",
      "price": "350",
      "priceCurrency": "EUR",
-     "description": "Tres sesiones online de 2 horas en un grupo de 4 a 6 personas. Próximo grupo: 2, 5 y 10 de noviembre de 2026. Precio por persona.",
+     "description": "Tres sesiones online de 2 horas en un grupo de 4 a 6 personas. Próximos grupos: 2, 5 y 10 de noviembre, y 16, 19 y 24 de noviembre de 2026. Precio por persona.",
      "availability": "https://schema.org/InStock",
      "url": "https://exponencialesfirm.com/formacion#formatos"
     }
@@ -325,7 +325,7 @@
      "name": "¿Cómo elijo el día y la hora?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Las sesiones 1:1 y el pack los agendas tú en mi calendario, en el horario que te acomode. El grupo tiene fechas fijas: el próximo es el lunes 2, jueves 5 y martes 10 de noviembre, a las 18:30 de Chile (22:30 en España)."
+      "text": "Las sesiones 1:1 y el pack los agendas tú en mi calendario, en el horario que te acomode. El grupo tiene fechas fijas. Los próximos son el lunes 2, jueves 5 y martes 10 de noviembre, y el lunes 16, jueves 19 y martes 24 de noviembre, siempre a las 18:30 de Chile (22:30 en España)."
      }
     },
     {
@@ -473,7 +473,7 @@
         <p class="mono">03</p>
         <h3>Grupo reducido</h3>
         <p>Tres sesiones con gente en tu misma situación. De la instalación a tu primer sistema.</p>
-        <p><b>Próximo grupo:</b> lunes 2, jueves 5 y martes 10 de noviembre · 18:30 Chile / 22:30 España</p>
+        <p><b>Próximos grupos</b>, a las 18:30 Chile / 22:30 España:<br>lunes 2, jueves 5 y martes 10 de noviembre<br>lunes 16, jueves 19 y martes 24 de noviembre</p>
         <div class="facts">
           <div><p class="mono">Duración</p><p>3 × 2 h, en 2 semanas</p></div>
           <div><p class="mono">Inversión</p><p class="price">350 €<s>480 €</s></p></div>
@@ -498,14 +498,19 @@
       <div>
         <p class="mono">Grupo reducido · Noviembre</p>
         <h3>Reserva tu plaza</h3>
-        <p>Lunes 2, jueves 5 y martes 10 de noviembre, a las 18:30 de Chile (22:30 en España). Tres sesiones online de 2 horas. El grupo se abre con 4 personas y te lo confirmo por correo. Reservar es gratis y mantienes el precio de lanzamiento.</p>
-        <p>¿No te calzan las fechas? Déjame tus datos igual y te aviso del siguiente grupo.</p>
+        <p>Dos grupos en noviembre, a las 18:30 de Chile (22:30 en España). Tres sesiones online de 2 horas. Cada grupo se abre con 4 personas y te lo confirmo por correo. Reservar es gratis y mantienes el precio de lanzamiento.</p>
+        <p>¿No te calza ninguno? Déjame tus datos igual y te aviso del siguiente.</p>
       </div>
       <form class="hsf" data-hs-form novalidate data-prefijo="Lista de espera · Grupo reducido de Claude Code" data-ok="Listo, tienes tu plaza reservada. Te escribo por correo para confirmar el grupo." data-error="No se pudo enviar. Escríbeme a info@exponencialesfirm.com." data-falta="Completa los campos marcados con *." data-correo="Revisa el correo: no parece válido." data-acepta="Falta aceptar la política de privacidad." data-enviando="Enviando…">
         <div><label for="l-nombre">Nombre <i>*</i></label><input id="l-nombre" name="firstname" type="text" autocomplete="given-name" required></div>
         <div><label for="l-apellido">Apellido <i>*</i></label><input id="l-apellido" name="lastname" type="text" autocomplete="family-name" required></div>
         <div><label for="l-correo">Correo <i>*</i></label><input id="l-correo" name="email" type="email" autocomplete="email" required></div>
         <div class="trap" aria-hidden="true"><label>No rellenar <input type="text" name="empresa_web" tabindex="-1" autocomplete="off"></label></div>
+        <div><label for="l-grupo">Grupo <i>*</i></label><select id="l-grupo" name="message" required>
+          <option value="Grupo 2, 5 y 10 de noviembre">Lunes 2, jueves 5 y martes 10 de noviembre</option>
+          <option value="Grupo 16, 19 y 24 de noviembre">Lunes 16, jueves 19 y martes 24 de noviembre</option>
+          <option value="Ninguno de los dos: avisar del siguiente">Ninguno me calza: avísame del siguiente</option>
+        </select></div>
         <label class="consent"><input type="checkbox" name="acepto" required><span>He leído y acepto la <a href="/politica-de-privacidad" target="_blank" rel="noopener">política de privacidad</a>.</span></label>
         <div><button class="btn btn--coral" type="submit">Reservar mi plaza</button><p class="hsf-status" role="status" aria-live="polite"></p></div>
       </form>
@@ -582,7 +587,7 @@
       <details><summary>¿Necesito saber programar?</summary><p>No. Claude Code escribe el código; tú aprendes a pedirle bien las cosas y a revisar lo que hace.</p></details>
       <details><summary>¿Qué necesito para la sesión?</summary><p>Tu propio Windows o Mac, buena conexión y una cuenta de pago de Claude, que corre por tu cuenta. Te mando el checklist al reservar.</p></details>
       <details><summary>¿Y si en 2 horas no llego a terminar?</summary><p>La sesión está pensada para que salgas con algo funcionando. Si tu proyecto es más grande, lo dividimos y te dejo claro el siguiente paso.</p></details>
-      <details><summary>¿Cómo elijo el día y la hora?</summary><p>Las sesiones 1:1 y el pack los agendas tú en mi calendario, en el horario que te acomode. El grupo tiene fechas fijas: el próximo es el lunes 2, jueves 5 y martes 10 de noviembre, a las 18:30 de Chile (22:30 en España).</p></details>
+      <details><summary>¿Cómo elijo el día y la hora?</summary><p>Las sesiones 1:1 y el pack los agendas tú en mi calendario, en el horario que te acomode. El grupo tiene fechas fijas. Los próximos son el lunes 2, jueves 5 y martes 10 de noviembre, y el lunes 16, jueves 19 y martes 24 de noviembre, siempre a las 18:30 de Chile (22:30 en España).</p></details>
       <details><summary>¿Puedo cambiar la fecha?</summary><p>En el 1:1 y el pack, sí: gratis si avisas con al menos 24 horas. Si avisas después o no te conectas, la sesión se da por hecha. En el grupo las fechas son fijas; si te pierdes una sesión, te quedas con la grabación.</p></details>
       <details><summary>¿Y si no me sirve?</summary><p>Si en la primera media hora de tu primera sesión sientes que no es para ti, cortamos ahí y te devuelvo el dinero completo. Sin preguntas.</p></details>
       <details><summary>¿Queda grabada?</summary><p>Sí, te la quedas tú. Nadie más la ve.</p></details>
