@@ -171,6 +171,17 @@
   @media (max-width:560px){.hsf{grid-template-columns:1fr}}
   .waitlist{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-top:16px;padding:32px;border:1px solid var(--line);border-radius:14px;background:var(--bg);scroll-margin-top:24px}
   .waitlist h3{font-weight:700;font-size:26px;letter-spacing:-.8px;margin:14px 0 8px}
+  .waitlist h3 span{color:var(--coral)}
+  .grupos{list-style:none;display:grid;gap:8px;margin:20px 0 10px}
+  .grupos li{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--bg-2)}
+  .grupos b{font:500 12px/1 "Geist Mono",ui-monospace,monospace;letter-spacing:.6px;text-transform:uppercase;color:var(--coral)}
+  .grupos span{color:var(--text);font-size:16px}
+  .waitlist > div > p.grupos-hora{font-size:14px;color:var(--text-3)}
+  .grupos-por-que{list-style:none;display:grid;gap:10px;margin:20px 0}
+  .grupos-por-que li{color:var(--text-2);font-size:15px;padding-left:16px;position:relative}
+  .grupos-por-que li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--coral)}
+  .grupos-por-que b{color:var(--text);font-weight:600}
+  .waitlist > div > p.grupos-otro{font-size:14px;color:var(--text-3)}
   .waitlist > div > p:not(.mono){color:var(--text-2);font-size:16px}
   .waitlist .hsf{grid-template-columns:1fr;margin-top:0}
   .waitlist .hsf-ok{margin-top:0}
@@ -509,9 +520,17 @@
     <div class="waitlist" id="lista-de-espera">
       <div>
         <p class="mono">Grupo reducido · Noviembre</p>
-        <h3>Reserva tu plaza</h3>
-        <p>Dos grupos en noviembre, a las 18:30 de Chile (22:30 en España). Tres sesiones online de 2 horas. Cada grupo se abre con 4 personas y te lo confirmo por correo. Reservar es gratis y mantienes el precio de lanzamiento.</p>
-        <p>¿No te calza ninguno? Déjame tus datos igual y te aviso del siguiente.</p>
+        <h3>Tres sesiones, seis plazas. <span>Sales con tu primer sistema funcionando.</span></h3>
+        <ul class="grupos">
+          <li><b>Grupo 1</b><span>Lun 2 · Jue 5 · Mar 10 de noviembre</span></li>
+          <li><b>Grupo 2</b><span>Lun 16 · Jue 19 · Mar 24 de noviembre</span></li>
+        </ul>
+        <p class="grupos-hora">18:30 Chile · 22:30 España · Online y en directo, 2 h por sesión</p>
+        <ul class="grupos-por-que">
+          <li><b>Máximo 6 personas</b>, para que haya tiempo para tu caso y no solo para el temario.</li>
+          <li><b>Reservar es gratis</b> y te guarda el precio de lanzamiento. El grupo se abre con 4 personas y te lo confirmo por correo.</li>
+        </ul>
+        <p class="grupos-otro">¿No te calza ninguna fecha? Elige «avísame del siguiente» en el formulario.</p>
       </div>
       <form class="hsf" data-hs-form novalidate data-prefijo="Lista de espera · Grupo reducido de Claude Code" data-ok="Listo, tienes tu plaza reservada. Te escribo por correo para confirmar el grupo." data-error="No se pudo enviar. Escríbeme a info@exponencialesfirm.com." data-falta="Completa los campos marcados con *." data-correo="Revisa el correo: no parece válido." data-acepta="Falta aceptar la política de privacidad." data-enviando="Enviando…">
         <div><label for="l-nombre">Nombre <i>*</i></label><input id="l-nombre" name="firstname" type="text" autocomplete="given-name" required></div>
