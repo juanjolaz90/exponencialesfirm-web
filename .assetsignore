@@ -1,0 +1,8 @@
+# Archivos del repositorio que no se publican en la web
+.git
+.gitignore
+.assetsignore
+README.md
+netlify.toml
+wrangler.jsonc
+node_modules
