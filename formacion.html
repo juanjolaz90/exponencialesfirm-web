@@ -172,6 +172,11 @@
   .waitlist{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-top:16px;padding:32px;border:1px solid var(--line);border-radius:14px;background:var(--bg);scroll-margin-top:24px}
   .waitlist h3{font-weight:700;font-size:26px;letter-spacing:-.8px;margin:14px 0 8px}
   .waitlist h3 span{color:var(--coral)}
+  .card-fechas{margin-top:18px}
+  .card-fechas .mono{font-size:11px;color:var(--coral)}
+  .card-fechas p + p{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+  .card-fechas b{font-weight:500;font-size:14px;color:var(--text);padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:var(--bg-2);white-space:nowrap}
+  .card-fechas p.card-fechas-hora{display:block;font-size:13px;color:var(--text-3)}
   .grupos{list-style:none;display:grid;gap:8px;margin:20px 0 10px}
   .grupos li{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--bg-2)}
   .grupos b{font:500 12px/1 "Geist Mono",ui-monospace,monospace;letter-spacing:.6px;text-transform:uppercase;color:var(--coral)}
@@ -495,8 +500,12 @@
       <article class="card">
         <p class="mono">03</p>
         <h3>Grupo reducido</h3>
-        <p>Tres sesiones con gente en tu misma situación. De la instalación a tu primer sistema.</p>
-        <p><b>Próximos grupos</b>, a las 18:30 Chile / 22:30 España:<br>lunes 2, jueves 5 y martes 10 de noviembre<br>lunes 16, jueves 19 y martes 24 de noviembre</p>
+        <p>Aprende junto a gente en tu misma situación. De la instalación a tu primer sistema funcionando.</p>
+        <div class="card-fechas">
+          <p class="mono">Próximos grupos</p>
+          <p><b>2 · 5 · 10 nov</b><b>16 · 19 · 24 nov</b></p>
+          <p class="card-fechas-hora">18:30 Chile · 22:30 España</p>
+        </div>
         <div class="facts">
           <div><p class="mono">Duración</p><p>3 × 2 h, en 2 semanas</p></div>
           <div><p class="mono">Inversión</p><p class="price" data-eur="350" data-antes="480">350 €<s>480 €</s></p></div>
