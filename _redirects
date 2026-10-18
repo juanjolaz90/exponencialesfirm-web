@@ -1,11 +1,6 @@
-# Dominio oficial: exponencialesfirm.com. El .es y las variantes con www llevan a él.
-https://www.exponencialesfirm.com/*   https://exponencialesfirm.com/:splat   301!
-https://exponencialesfirm.es/*        https://exponencialesfirm.com/:splat   301!
-https://www.exponencialesfirm.es/*    https://exponencialesfirm.com/:splat   301!
-http://exponencialesfirm.es/*         https://exponencialesfirm.com/:splat   301!
-http://www.exponencialesfirm.es/*     https://exponencialesfirm.com/:splat   301!
-
-# Redirecciones de la web antigua (WordPress) a la nueva. Formato de Netlify.
+# Redirecciones de la web antigua (WordPress) a la nueva.
+# Formato compatible con Cloudflare Pages y con Netlify: solo rutas relativas.
+# Las redirecciones de dominio (.es y www → .com) no van aquí: Cloudflare no las admite en este archivo.
 /nosotros        /#sobre-mi    301
 /contacto        /#contacto    301
 /servicios       /#servicios   301
@@ -21,7 +16,3 @@ http://www.exponencialesfirm.es/*     https://exponencialesfirm.com/:splat   301
 /sitemap_index.xml   /sitemap.xml   301
 /page-sitemap.xml    /sitemap.xml   301
 /post-sitemap.xml    /sitemap.xml   301
-
-# Archivos del repositorio que no son parte de la web
-/README.md       /404.html     404!
-/netlify.toml    /404.html     404!
