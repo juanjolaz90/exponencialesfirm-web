@@ -178,7 +178,12 @@
   .card-fechas b{font-weight:500;font-size:14px;color:var(--text);padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:var(--bg-2);white-space:nowrap}
   .card-fechas p.card-fechas-hora{display:block;font-size:13px;color:var(--text-3)}
   .grupos{list-style:none;display:grid;gap:8px;margin:20px 0 10px}
-  .grupos li{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--bg-2)}
+  .grupos li{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 14px;padding:12px 12px 12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--bg-2)}
+  .grupos li > div{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px}
+  .grupos .btn{padding:10px 16px;font-size:14px;white-space:nowrap}
+  .siguiente{padding-left:32px;border-left:1px solid var(--line)}
+  .siguiente h4{font-weight:600;font-size:20px;letter-spacing:-.4px;margin:12px 0 4px}
+  @media (max-width:860px){.siguiente{padding-left:0;border-left:0;padding-top:24px;border-top:1px solid var(--line)}}
   .grupos b{font:500 12px/1 "Geist Mono",ui-monospace,monospace;letter-spacing:.6px;text-transform:uppercase;color:var(--coral)}
   .grupos span{color:var(--text);font-size:16px}
   .waitlist > div > p.grupos-hora{font-size:14px;color:var(--text-3)}
@@ -475,8 +480,8 @@
           <li>Grabación y resumen de próximos pasos</li>
           <li>7 días de dudas por correo</li>
         </ul>
-        <a class="btn btn--ghost" href="mailto:info@exponencialesfirm.com?subject=Quiero%20reservar%20una%20sesi%C3%B3n%201%3A1">Reservar sesión 1:1</a>
-        <p class="micro">Eliges día y hora en mi calendario</p>
+        <a class="btn btn--ghost" href="https://buy.stripe.com/14A7sNa4Ha6wctx5DM6g800">Reservar sesión 1:1</a>
+        <p class="micro">Pago seguro con Stripe · Después eliges día y hora</p>
       </article>
 
       <article class="card card--featured">
@@ -493,8 +498,8 @@
           <li>Dudas por correo durante todo el pack</li>
           <li>Avanzas a tu ritmo</li>
         </ul>
-        <a class="btn btn--coral" href="mailto:info@exponencialesfirm.com?subject=Quiero%20reservar%20el%20pack%201%3A1">Reservar pack</a>
-        <p class="micro">Eliges día y hora de cada sesión</p>
+        <a class="btn btn--coral" href="https://buy.stripe.com/6oU7sN4Kn4MceBFc2a6g801">Reservar pack</a>
+        <p class="micro">Pago seguro con Stripe · Después eliges día y hora</p>
       </article>
 
       <article class="card">
@@ -516,8 +521,8 @@
           <li>Sesión 3: tu propio agente o automatización</li>
           <li>De 4 a 6 personas por grupo</li>
         </ul>
-        <a class="btn btn--ghost" href="#lista-de-espera" data-abrir-form aria-controls="lista-de-espera">Reservar mi plaza</a>
-        <p class="micro">Reservar es gratis · Se abre con 4 personas · Te confirmo por correo</p>
+        <a class="btn btn--ghost" href="#lista-de-espera" data-abrir-form aria-controls="lista-de-espera">Elegir grupo y reservar</a>
+        <p class="micro">Pago seguro con Stripe · Máximo 6 personas por grupo</p>
       </article>
     </div>
 
@@ -531,29 +536,28 @@
         <p class="mono">Grupo reducido · Noviembre</p>
         <h3>Tres sesiones, seis plazas. <span>Sales con tu primer sistema funcionando.</span></h3>
         <ul class="grupos">
-          <li><b>Grupo 1</b><span>Lun 2 · Jue 5 · Mar 10 de noviembre</span></li>
-          <li><b>Grupo 2</b><span>Lun 16 · Jue 19 · Mar 24 de noviembre</span></li>
+          <li><div><b>Grupo 1</b><span>Lun 2 · Jue 5 · Mar 10 de noviembre</span></div><a class="btn btn--coral" href="https://buy.stripe.com/dRmdRb3Gj0vWctxd6e6g802">Reservar · 350 €</a></li>
+          <li><div><b>Grupo 2</b><span>Lun 16 · Jue 19 · Mar 24 de noviembre</span></div><a class="btn btn--coral" href="https://buy.stripe.com/7sY14pfp1fqQalp7LU6g803">Reservar · 350 €</a></li>
         </ul>
         <p class="grupos-hora">18:30 Chile · 22:30 España · Online y en directo, 2 h por sesión</p>
         <ul class="grupos-por-que">
           <li><b>Máximo 6 personas</b>, para que haya tiempo para tu caso y no solo para el temario.</li>
-          <li><b>Reservar es gratis</b> y te guarda el precio de lanzamiento. El grupo se abre con 4 personas y te lo confirmo por correo.</li>
+          <li><b>Pagas al reservar</b> y te quedas con el precio de lanzamiento. El grupo se abre con 4 personas: si no se completa, te devuelvo el dinero o pasas al siguiente grupo.</li>
         </ul>
-        <p class="grupos-otro">¿No te calza ninguna fecha? Elige «avísame del siguiente» en el formulario.</p>
       </div>
-      <form class="hsf" data-hs-form novalidate data-prefijo="Lista de espera · Grupo reducido de Claude Code" data-ok="Listo, tienes tu plaza reservada. Te escribo por correo para confirmar el grupo." data-error="No se pudo enviar. Escríbeme a info@exponencialesfirm.com." data-falta="Completa los campos marcados con *." data-correo="Revisa el correo: no parece válido." data-acepta="Falta aceptar la política de privacidad." data-enviando="Enviando…">
+      <div class="siguiente">
+      <p class="mono">¿Ninguna fecha te calza?</p>
+      <h4>Te aviso cuando abra el próximo grupo.</h4>
+      <form class="hsf" data-hs-form novalidate data-prefijo="Lista de espera · Grupo reducido de Claude Code" data-ok="Listo, estás en la lista. Te aviso por correo antes de abrir el próximo grupo." data-error="No se pudo enviar. Escríbeme a info@exponencialesfirm.com." data-falta="Completa los campos marcados con *." data-correo="Revisa el correo: no parece válido." data-acepta="Falta aceptar la política de privacidad." data-enviando="Enviando…">
         <div><label for="l-nombre">Nombre <i>*</i></label><input id="l-nombre" name="firstname" type="text" autocomplete="given-name" required></div>
         <div><label for="l-apellido">Apellido <i>*</i></label><input id="l-apellido" name="lastname" type="text" autocomplete="family-name" required></div>
         <div><label for="l-correo">Correo <i>*</i></label><input id="l-correo" name="email" type="email" autocomplete="email" required></div>
         <div class="trap" aria-hidden="true"><label>No rellenar <input type="text" name="empresa_web" tabindex="-1" autocomplete="off"></label></div>
-        <div><label for="l-grupo">Grupo <i>*</i></label><select id="l-grupo" name="message" required>
-          <option value="Grupo 2, 5 y 10 de noviembre">Lunes 2, jueves 5 y martes 10 de noviembre</option>
-          <option value="Grupo 16, 19 y 24 de noviembre">Lunes 16, jueves 19 y martes 24 de noviembre</option>
-          <option value="Ninguno de los dos: avisar del siguiente">Ninguno me calza: avísame del siguiente</option>
-        </select></div>
+        <input type="hidden" name="message" value="Siguiente grupo (no le calzan las fechas de noviembre)">
         <label class="consent"><input type="checkbox" name="acepto" required><span>He leído y acepto la <a href="/politica-de-privacidad" target="_blank" rel="noopener">política de privacidad</a>.</span></label>
-        <div><button class="btn btn--coral" type="submit">Reservar mi plaza</button><p class="hsf-status" role="status" aria-live="polite"></p></div>
+        <div><button class="btn btn--coral" type="submit">Avísame del próximo grupo</button><p class="hsf-status" role="status" aria-live="polite"></p></div>
       </form>
+      </div>
     </div>
   </div>
 </section>
@@ -641,7 +645,7 @@
     <h2 id="t-final">Deja de verlo en videos. <span>Hazlo con alguien al lado.</span></h2>
     <div class="ctas">
       <a class="btn btn--coral" href="#formatos">Reservar sesión 1:1 →</a>
-      <a class="btn btn--ghost" href="#lista-de-espera" data-abrir-form aria-controls="lista-de-espera">Reservar plaza en el grupo</a>
+      <a class="btn btn--ghost" href="#lista-de-espera" data-abrir-form aria-controls="lista-de-espera">Ver grupos de noviembre</a>
     </div>
     <p class="micro">Online · Pago seguro con tarjeta · Garantía de devolución en la primera media hora</p>
   </div>
@@ -666,7 +670,7 @@
         bloque.hidden = false;
         b.setAttribute('aria-expanded', 'true');
         bloque.scrollIntoView({ block: 'start' });
-        var primero = bloque.querySelector('input:not([tabindex="-1"])');
+        var primero = bloque.querySelector('.grupos a, input:not([tabindex="-1"])');
         if (primero) primero.focus({ preventScroll: true });
       });
     });
