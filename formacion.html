@@ -100,7 +100,7 @@
   .moneda button[aria-pressed=true]{background:var(--bg-2);color:var(--text)}
   .moneda button:focus-visible{outline:2px solid var(--coral);outline-offset:-2px}
   .moneda-nota{font-size:13px;color:var(--text-3)}
-  .facts .price small{font-size:13px;font-weight:400;color:var(--text-3);letter-spacing:0;margin-right:4px}
+  .facts .price small{display:block;font-size:12px;font-weight:500;color:var(--text-3);letter-spacing:.3px;margin-bottom:4px}
   .guarantee{display:flex;gap:24px;align-items:baseline;margin-top:16px;padding:22px 28px;border:1px solid var(--line);border-radius:14px}
   .guarantee .mono{color:var(--coral);flex:none}
   .guarantee p:last-child{color:var(--text-2);font-size:16px}
@@ -703,7 +703,8 @@
       [].forEach.call(precios, function (p) {
         var eur = +p.dataset.eur, antes = +p.dataset.antes;
         if (m === "EUR") { p.innerHTML = formato(eur, m) + "<s>" + formato(antes, m) + "</s>"; return; }
-        p.innerHTML = "<small>≈</small>" + formato(redondear(eur * tasas[m], m), m) + "<s>" + formato(redondear(antes * tasas[m], m), m) + "</s>";
+        var cifra = function (v) { return redondear(v * tasas[m], m).toLocaleString(m === "CLP" ? "es-CL" : "en-US"); };
+        p.innerHTML = "<small>≈ " + (m === "USD" ? "US$" : "CLP $") + "</small>" + cifra(eur) + "<s>" + cifra(antes) + "</s>";
       });
       nota.textContent = m === "EUR" ? "" : "Aproximado. El cobro se hace en euros y al pagar ves el importe exacto en tu moneda.";
     }
