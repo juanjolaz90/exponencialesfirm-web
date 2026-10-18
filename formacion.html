@@ -93,6 +93,14 @@
   .card .micro{margin-top:12px;font-size:13px;text-align:center}
   .tag{display:inline-block;align-self:flex-start;background:var(--coral);color:#0B0A10;font:600 11px/1 "Geist Mono",monospace;letter-spacing:1px;text-transform:uppercase;padding:6px 8px;border-radius:4px}
   .launch{margin-top:20px;font-size:14px;color:var(--text-3)}
+  .moneda{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin-top:16px}
+  .moneda [role=group]{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .moneda button{font:500 13px/1 "Geist",system-ui,sans-serif;letter-spacing:.4px;color:var(--text-2);background:transparent;border:0;padding:9px 14px;cursor:pointer}
+  .moneda button + button{border-left:1px solid var(--line)}
+  .moneda button[aria-pressed=true]{background:var(--bg-2);color:var(--text)}
+  .moneda button:focus-visible{outline:2px solid var(--coral);outline-offset:-2px}
+  .moneda-nota{font-size:13px;color:var(--text-3)}
+  .facts .price small{font-size:13px;font-weight:400;color:var(--text-3);letter-spacing:0;margin-right:4px}
   .guarantee{display:flex;gap:24px;align-items:baseline;margin-top:16px;padding:22px 28px;border:1px solid var(--line);border-radius:14px}
   .guarantee .mono{color:var(--coral);flex:none}
   .guarantee p:last-child{color:var(--text-2);font-size:16px}
@@ -431,6 +439,10 @@
     <p class="mono kicker">03 / Formatos</p>
     <h2 id="t-formatos">Elige cómo quieres aprender.</h2>
     <p class="launch">Precios de lanzamiento. Suben cuando se cumplan los primeros cupos.</p>
+    <div class="moneda" hidden>
+      <div role="group" aria-label="Moneda de los precios"><button type="button" data-m="EUR" aria-pressed="true">EUR</button><button type="button" data-m="USD" aria-pressed="false">USD</button><button type="button" data-m="CLP" aria-pressed="false">CLP</button></div>
+      <p class="moneda-nota" aria-live="polite"></p>
+    </div>
 
     <div class="formats">
       <article class="card">
@@ -439,7 +451,7 @@
         <p>Para empezar desde cero o para destrabar algo concreto. A tu ritmo, sobre tu proyecto.</p>
         <div class="facts">
           <div><p class="mono">Duración</p><p>2 horas</p></div>
-          <div><p class="mono">Inversión</p><p class="price">190 €<s>260 €</s></p></div>
+          <div><p class="mono">Inversión</p><p class="price" data-eur="190" data-antes="260">190 €<s>260 €</s></p></div>
         </div>
         <ul>
           <li>Checklist previo para llegar con todo instalado</li>
@@ -457,7 +469,7 @@
         <p>Para avanzar de verdad. Cada sesión parte donde quedó la anterior, con alguien que ya conoce tu caso.</p>
         <div class="facts">
           <div><p class="mono">Duración</p><p>3 × 2 h, en 2 a 4 semanas</p></div>
-          <div><p class="mono">Inversión</p><p class="price">490 €<s>690 €</s></p></div>
+          <div><p class="mono">Inversión</p><p class="price" data-eur="490" data-antes="690">490 €<s>690 €</s></p></div>
         </div>
         <ul>
           <li>Todo lo de la sesión 1:1, tres veces</li>
@@ -476,7 +488,7 @@
         <p><b>Próximos grupos</b>, a las 18:30 Chile / 22:30 España:<br>lunes 2, jueves 5 y martes 10 de noviembre<br>lunes 16, jueves 19 y martes 24 de noviembre</p>
         <div class="facts">
           <div><p class="mono">Duración</p><p>3 × 2 h, en 2 semanas</p></div>
-          <div><p class="mono">Inversión</p><p class="price">350 €<s>480 €</s></p></div>
+          <div><p class="mono">Inversión</p><p class="price" data-eur="350" data-antes="480">350 €<s>480 €</s></p></div>
         </div>
         <ul>
           <li>Sesión 1: instalación y tu primer proyecto</li>
@@ -671,6 +683,47 @@
         });
       });
     });
+  })();
+
+  // Precios en otras monedas: equivalente aproximado con el tipo de cambio del día. Se cobra en euros.
+  (function () {
+    var bloque = document.querySelector(".moneda");
+    var precios = document.querySelectorAll(".price[data-eur]");
+    if (!bloque || !precios.length || !window.fetch) return;
+    var nota = bloque.querySelector(".moneda-nota");
+    var tasas = null;
+    function redondear(v, m) { return m === "CLP" ? Math.round(v / 5000) * 5000 : Math.round(v / 5) * 5; }
+    function formato(v, m) {
+      if (m === "EUR") return v + " €";
+      if (m === "USD") return "US$ " + v.toLocaleString("en-US");
+      return "$" + v.toLocaleString("es-CL") + " CLP";
+    }
+    function mostrar(m) {
+      [].forEach.call(bloque.querySelectorAll("button"), function (b) { b.setAttribute("aria-pressed", String(b.dataset.m === m)); });
+      [].forEach.call(precios, function (p) {
+        var eur = +p.dataset.eur, antes = +p.dataset.antes;
+        if (m === "EUR") { p.innerHTML = formato(eur, m) + "<s>" + formato(antes, m) + "</s>"; return; }
+        p.innerHTML = "<small>≈</small>" + formato(redondear(eur * tasas[m], m), m) + "<s>" + formato(redondear(antes * tasas[m], m), m) + "</s>";
+      });
+      nota.textContent = m === "EUR" ? "" : "Aproximado. El cobro se hace en euros y al pagar ves el importe exacto en tu moneda.";
+    }
+    function inicial() {
+      var zona = "";
+      try { zona = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch (e) {}
+      if (zona === "America/Santiago" || zona === "America/Punta_Arenas" || zona === "Pacific/Easter") return "CLP";
+      if (zona.indexOf("America/") === 0) return "USD";
+      return "EUR";
+    }
+    fetch("https://open.er-api.com/v6/latest/EUR")
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (!d || !d.rates || !d.rates.USD || !d.rates.CLP) return;
+        tasas = { USD: d.rates.USD, CLP: d.rates.CLP };
+        bloque.hidden = false;
+        bloque.addEventListener("click", function (e) { var b = e.target.closest("button[data-m]"); if (b) mostrar(b.dataset.m); });
+        mostrar(inicial());
+      })
+      .catch(function () {});
   })();
 </script>
 <!-- Medición de visitas sin cookies (Cloudflare Web Analytics) -->
