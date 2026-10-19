@@ -114,7 +114,10 @@
   .shot .bar i{width:8px;height:8px;border-radius:50%;background:var(--line)}
   .shot .bar span{margin-left:6px}
   .shot a{display:block}
-  .shot img{display:block;width:100%;height:auto}
+  .shot img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;object-position:left top;filter:brightness(.8) saturate(.9);transition:filter .25s}
+  .shot img.der{object-position:right top}
+  .project:hover .shot img,.shot a:focus-visible img{filter:none}
+  @media (prefers-reduced-motion:reduce){.shot img{transition:none}}
   .shot a:focus-visible{outline:2px solid var(--coral);outline-offset:-2px}
   .flow{margin:0 0 8px}
   .flow figcaption{font:500 11px/1 "Geist Mono",monospace;letter-spacing:1px;text-transform:uppercase;color:var(--text-3);margin-bottom:10px}
@@ -506,7 +509,7 @@
         <h3>AI chatbot for customer service</h3>
         <figure class="shot">
           <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>refruiting.com</span></div>
-          <a href="https://www.refruiting.com/" target="_blank" rel="noopener" aria-label="See the site: refruiting.com"><img src="/proyectos/refruiting-chatbot.jpg" width="1184" height="538" loading="lazy" alt="Refruiting website with the AI chatbot open"></a>
+          <a href="https://www.refruiting.com/" target="_blank" rel="noopener" aria-label="See the site: refruiting.com"><img src="/proyectos/refruiting-chatbot.jpg" class="der" width="1184" height="538" loading="lazy" alt="Refruiting website with the AI chatbot open"></a>
         </figure>
         <figure class="flow">
           <figcaption>Flow diagram</figcaption>
