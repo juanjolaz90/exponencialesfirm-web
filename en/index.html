@@ -365,7 +365,7 @@
     </ul>
     <div class="nav-right">
       <div class="lang" aria-label="Language"><a href="/" lang="es">ES</a><a href="/en/" aria-current="true" lang="en">EN</a></div>
-      <a class="btn btn--coral" href="https://meetings-eu1.hubspot.com/exponenciales-firm/juanjo" target="_blank" rel="noopener">Book a call</a>
+      <a class="btn btn--coral" href="#write" data-abrir-form aria-controls="contact-form">Contact</a>
     </div>
   </nav>
 
@@ -682,6 +682,8 @@
         if (primero) primero.focus({ preventScroll: true });
       });
     });
+    // Desde otras páginas se llega con #write y el formulario se abre solo
+    if (location.hash === "#write") { var abrir = document.querySelector("[data-abrir-form]"); if (abrir) abrir.click(); }
 
     document.querySelectorAll('form[data-hs-form]').forEach(function (f) {
       var estado = f.querySelector('.hsf-status');
