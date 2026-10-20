@@ -398,7 +398,7 @@
 
   <div class="stats">
     <div><b>9+ years</b><p>connecting marketing, sales and customer service on the CRM</p></div>
-    <div><b>12+ clients</b><p>as an independent consultant, training their teams</p></div>
+    <div><b>6 → 1</b><p>people to handle 2,700 queries a month, with an AI chatbot</p></div>
     <div><b>−20%</b><p>shorter sales cycle after redesigning a sales pipeline</p></div>
   </div>
 
@@ -718,7 +718,7 @@
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(d.get('email')).trim())) { avisar(f.dataset.correo, 'error'); return; }
         if (!f.querySelector('[name=acepto]').checked) { avisar(f.dataset.acepta, 'error'); return; }
 
-        var datos = { tipo: f.dataset.prefijo ? 'lista_espera' : 'contacto', pagina: location.href };
+        var datos = { tipo: f.dataset.prefijo ? 'lista_espera' : 'contacto', pagina: location.href, referente: document.referrer || '' };
         ['firstname', 'lastname', 'email', 'phone', 'message'].forEach(function (n) {
           var v = String(d.get(n) || '').trim();
           if (v) datos[n] = v;

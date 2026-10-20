@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Consultor de CRM, HubSpot e IA para B2B | Exponenciales Firm</title>
-<meta name="description" content="Consultoría de CRM, automatización e IA para empresas B2B. HubSpot, Salesforce, n8n y agentes de IA, sin agencias intermedias. Agenda una llamada gratis.">
+<meta name="description" content="Consultoría de CRM, automatización e IA para empresas B2B. HubSpot, Salesforce, n8n y agentes de IA, sin agencias intermedias. Agenda una llamada sin costo.">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -395,12 +395,12 @@
       <a class="btn btn--coral" href="https://exponenciales-agenda.vercel.app/juanjo/exploracion" target="_blank" rel="noopener">Agendar llamada →</a>
       <a class="btn btn--ghost" href="#proyectos">Ver proyectos</a>
     </div>
-    <p class="micro">30 minutos · Gratis · España y Latinoamérica</p>
+    <p class="micro">30 minutos · Sin costo · España y Latinoamérica</p>
   </header>
 
   <div class="stats">
     <div><b>+9 años</b><p>conectando marketing, ventas y atención al cliente sobre el CRM</p></div>
-    <div><b>+12 clientes</b><p>como consultor independiente, formando a sus equipos</p></div>
+    <div><b>6 → 1</b><p>personas para atender 2.700 consultas al mes, con un chatbot de IA</p></div>
     <div><b>−20 %</b><p>en el ciclo de ventas tras rediseñar un pipeline comercial</p></div>
   </div>
 
@@ -453,7 +453,7 @@
         <p class="mono">02</p>
         <h3>Automatización e integraciones</h3>
         <div>
-          <p>Conecto el CRM con el resto del negocio para que deje de ser un sistema aislado: ERP, pagos, formularios y herramientas internas. Clientes, pedidos y facturación sin doble digitación.</p>
+          <p>Conecto el CRM con el resto del negocio para que deje de ser un sistema aislado: ERP, pagos, formularios y herramientas internas. Clientes, pedidos y facturación sin introducir los datos dos veces.</p>
           <p class="tools">n8n · APIs REST · Webhooks · Integraciones CRM–ERP</p>
         </div>
       </div>
@@ -461,7 +461,7 @@
         <p class="mono">03</p>
         <h3>IA aplicada</h3>
         <div>
-          <p>Agentes que hacen trabajo real: clasifican leads, enriquecen datos, generan cotizaciones y resuelven consultas de clientes. Conectados a tu CRM, no en una pestaña aparte.</p>
+          <p>Agentes que hacen trabajo real: clasifican leads, enriquecen datos, preparan presupuestos y resuelven consultas de clientes. Conectados a tu CRM, no en una pestaña aparte.</p>
           <p class="tools">Agentes de IA · LLM · MCP · Claude Code</p>
         </div>
       </div>
@@ -555,15 +555,15 @@
         <figure class="flow">
           <figcaption>Esquema del flujo</figcaption>
           <ol>
-            <li><b>Solicitud</b><span>Un cliente pide una cotización</span></li>
+            <li><b>Solicitud</b><span>Un cliente pide un presupuesto</span></li>
             <li class="key"><b>Agente</b><span>Reúne los datos y la arma</span></li>
-            <li><b>Cotización</b><span>Lista para revisar y enviar</span></li>
+            <li><b>Presupuesto</b><span>Listo para revisar y enviar</span></li>
           </ol>
         </figure>
         <dl>
-          <dt>Problema</dt><dd>Hacía falta una web nueva, y las cotizaciones y los datos comerciales se preparaban a mano.</dd>
-          <dt>Qué construí</dt><dd>El desarrollo de la web, un agente que genera cotizaciones automáticamente y otros que enriquecen datos.</dd>
-          <dt>Resultado</dt><dd class="result">Web publicada y cotizaciones que se generan solas.</dd>
+          <dt>Problema</dt><dd>Hacía falta una web nueva, y los presupuestos y los datos comerciales se preparaban a mano.</dd>
+          <dt>Qué construí</dt><dd>El desarrollo de la web, un agente que prepara presupuestos automáticamente y otros que enriquecen datos.</dd>
+          <dt>Resultado</dt><dd class="result">Web publicada y presupuestos que se preparan solos.</dd>
         </dl>
         <div class="stack"><span>Claude Code</span><span>Agentes de IA</span><span>HubSpot</span><span>WordPress</span></div>
       </article>
@@ -660,7 +660,7 @@
       <a class="btn btn--coral" href="https://exponenciales-agenda.vercel.app/juanjo/exploracion" target="_blank" rel="noopener">Agendar llamada →</a>
       <button class="btn btn--ghost" type="button" data-abrir-form aria-controls="formulario-contacto" aria-expanded="false">Escribirme un mensaje</button>
     </div>
-    <p class="micro">30 minutos · Gratis · Sin compromiso</p>
+    <p class="micro">30 minutos · Sin costo · Sin compromiso</p>
 
     <div class="contact-form" id="formulario-contacto" hidden>
       <p class="mono">Formulario de contacto</p>
@@ -720,7 +720,7 @@
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(d.get('email')).trim())) { avisar(f.dataset.correo, 'error'); return; }
         if (!f.querySelector('[name=acepto]').checked) { avisar(f.dataset.acepta, 'error'); return; }
 
-        var datos = { tipo: f.dataset.prefijo ? 'lista_espera' : 'contacto', pagina: location.href };
+        var datos = { tipo: f.dataset.prefijo ? 'lista_espera' : 'contacto', pagina: location.href, referente: document.referrer || '' };
         ['firstname', 'lastname', 'email', 'phone', 'message'].forEach(function (n) {
           var v = String(d.get(n) || '').trim();
           if (v) datos[n] = v;
